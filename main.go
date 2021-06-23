@@ -99,7 +99,7 @@ func findShort(w http.ResponseWriter, r *http.Request)  {
 	}
 	defer db.Close()
 	sentence := surl.URL
-	urlKey := string([]rune(sentence)[22:])
+	urlKey := string([]rune(sentence)[(len(sentence)-5):])
 		rows := db.QueryRow("select link from links where short=$1 limit 1", urlKey)
 	rows.Scan(&link)
 	url2.URL = link
